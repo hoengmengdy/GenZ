@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Noto Sans Khmer', sans-serif;
 }
 
 body {
@@ -348,4 +347,10 @@ textarea {
     .menu {
         display: none;
     }
+}
+
+.khmer-title {
+    font-family: 'Moul', serif;
+    font-size: 32px;
+    line-height: 1.7;
 }
