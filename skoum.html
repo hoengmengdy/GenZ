@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STEAV NEWS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- inside <head> -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav">
+            <div class="logo">GenZ <br>NEWS</div>
+            <div class="menu">
+                <a href="./index.html">ទំព័រដើម</a>
+                <a href="./komsan.html">កម្សាន្ត</a>
+                <a href="./skoum.html">សង្គម</a>
+                <a href="./sneha.html">ស្នេហា</a>
+                <a href="./pipoblok.html">ពិភពលោក</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <div class="brand">
+                <h1>GenZ<br>NEWS</h1>
+                <div class="line"></div>
+                <h1>BREAKING<br>NEWS</h1>
+            </div>
+            <p>កុំ​ស្រឡាញ់គេម្នាក់ឯង</p>
+        </div>
+    </section>
+
+    <div class="search">
+        <input type="text" placeholder="Search articles by title or content..." />
+        <button>Search</button>
+    </div>
+
+    <div class="container">
+        <main>
+            <h2>Highlights</h2>
+            <div class="grid" id="highlights"></div>
+
+            <br>
+            <h2>Latest Articles</h2>
+            <div class="grid" id="latest"></div>
+
+            <div class="pagination">
+                <span>1</span>
+            </div>
+        </main>
+
+        <aside>
+            <h2>Trending Now</h2>
+            <div class="trending" id="trending"></div>
+        </aside>
+    </div>
+
+    <script>
+        const articles = [{
+            title: "Page​ នេះហើយដែលផុសរឿង AI​មិនដែលមានភាគ ត",
+            img: "./img/1.jpg",
+            date: "April 23, 2026",
+            link: "article1.html"
+        }, {
+            title: "ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ​ នាក់កាន់ Page",
+            img: "./img/2.jpg",
+            date: "April 23, 2026",
+            link: "article2.html"
+        }, {
+            title: "ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍ ",
+            img: "./img/3.jpg",
+            date: "April 23, 2026",
+            link: "article3.html"
+        }];
+
+        function card(a) {
+            return `
+    <a href="${a.link}" class="card">
+      <img src="${a.img}">
+      <div class="content">
+        <h3>${a.title}</h3>
+        <div class="meta">${a.date} · 👁 1K</div>
+      </div>
+    </a>
+  `;
+        }
+
+        document.getElementById("highlights").innerHTML =
+            articles.slice(0, 4).map(card).join("");
+
+        document.getElementById("latest").innerHTML =
+            articles.map(card).join("");
+
+        document.getElementById("trending").innerHTML =
+            articles.slice(0, 5).map((a, i) => `
+    <a href="${a.link}" class="trend">
+      <div class="num">${i+1}</div>
+      <img src="${a.img}">
+      <p>${a.title}</p>
+    </a>
+  `).join("");
+    </script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>

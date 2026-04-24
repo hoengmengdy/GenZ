@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>GenZ News Article</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Khmer OS Battambang, sans-serif;
+        }
+        
+        body {
+            background: #eee;
+        }
+        /* Header */
+        
+        header {
+            background: #02ff49;
+            color: white;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        /* Layout */
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+        /* Article */
+        
+        .article-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+        }
+        
+        .badge {
+            background: #b61515;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .meta {
+            color: #777;
+            font-size: 14px;
+            margin: 12px 0 25px;
+        }
+        
+        .article-box h1 {
+            font-size: 34px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        
+        .hero {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .article-box p {
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        /* share */
+        
+        .share {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .share button {
+            background: #d80000;
+            border: none;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* comments */
+        
+        .comment-box {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        
+        textarea {
+            height: 130px;
+        }
+        
+        .post-btn {
+            margin-top: 15px;
+            background: red;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+        }
+        /* Related */
+        
+        .related {
+            margin-top: 50px;
+        }
+        
+        .related h2 {
+            margin-bottom: 20px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            text-decoration: none;
+            color: #000;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+        
+        .card h4 {
+            padding: 12px;
+            font-size: 15px;
+        }
+        /* sidebar */
+        
+        .sidebar {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            height: max-content;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+        }
+        
+        .sidebar h3 {
+            border-left: 4px solid red;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .trend {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            align-items: center;
+        }
+        
+        .trend img {
+            width: 90px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        .num {
+            background: red;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 13px;
+        }
+        
+        .Trending {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            text-decoration: none;
+            background: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            margin-bottom: 18px;
+            transition: .3s;
+            color: #111;
+        }
+        
+        .Trending:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+        }
+        
+        .Trending img {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        
+        .Trending h4 {
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .Trending:hover h4 {
+            color: red;
+        }
+        
+        @media(max-width:900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">GenZ News</div>
+
+        <nav>
+            <a href="./index.html">ទំព័រដើម</a>
+            <a href="./komsan.html">កម្សាន្ត</a>
+            <a href="./skoum.html">សង្គម</a>
+            <a href="./sneha.html">ស្នេហា</a>
+            <a href="./pipoblok.html">ពិភពលោក</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+
+        <!-- left -->
+        <div>
+
+            <div class="article-box">
+
+                <div class="badge">HOT NEWS</div>
+
+                <h1>
+                    ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page
+                </h1>
+
+                <div class="meta">
+                    April 23, 2026 · 1.5k Views · 5 mins read
+                </div>
+
+                <img class="hero" src="./img/1.jpg">
+
+                <p>
+
+                    Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត ពេលនេះកំពុងផ្ទុះការចាប់អារម្មណ៍យ៉ាងខ្លាំងលើបណ្ដាញសង្គម ដោយមានមនុស្សជាច្រើនចែករំលែក និងនិយាយពីវា។ ប្រភពព័ត៌មានបានឲ្យដឹងថា រឿងនេះកំពុងធ្វើឲ្យអ្នកលេងបណ្ដាញសង្គមភ្ញាក់ផ្អើល ព្រោះមានខ្លឹមសារប្លែក និងមិនធ្លាប់ឃើញពីមុនមក។
+                    បច្ចុប្បន្ន page នេះកំពុងទទួលបានការចាប់អារម្មណ៍ខ្លាំង ហើយមានអ្នករង់ចាំតាមដានភាគបន្តយ៉ាងច្រើន។
+                </p>
+
+
+                <div class="share">
+                    <button>Like</button>
+                    <button>Share</button>
+                    <button>Comment</button>
+                </div>
+
+
+                <div class="comment-box">
+                    <h2>Leave a Comment</h2>
+
+                    <input placeholder="Your name">
+
+                    <textarea placeholder="Write your comment..."></textarea>
+
+                    <button class="post-btn">
+Post Comment
+</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="related">
+                <h2>Related Articles</h2>
+
+                <div class="grid">
+
+                    <a href="article2.html" class="card">
+                        <img src="./img/2.jpg" alt="">
+                        <h4> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page</h4>
+                    </a>
+
+                    <a href="article3.html" class="card">
+                        <img src="./img/3.jpg" alt="">
+                        <h4>ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍</h4>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- right -->
+        <div class="sidebar">
+
+            <h3>Trending Now</h3>
+
+            <a href="article1.html" class="Trending">
+                <span class="num">1</span>
+                <img src="./img/1.jpg">
+                <h4>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត...</h4>
+            </a>
+
+            <a href="article2.html" class="Trending">
+                <span class="num">2</span>
+                <img src="./img/2.jpg">
+                <h4> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page...</h4>
+            </a>
+            <a href="article3.html" class="Trending">
+                <span class="num">1</span>
+                <img src="./img/3.jpg">
+                <h5> ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ...</h5>
+            </a>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
