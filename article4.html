@@ -33,33 +33,33 @@
 
 
                 <h1 class="khmer-title">
-                    ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍
+                    Page​​ នេះហើយដែលតែងតែ Share រឿងអត់ប្រយោជ៍ ប៉ុន្តែ ឡូយ​
                 </h1>
 
                 <div class="meta">
                     April 23, 2026 · 1.5k Views
                 </div>
 
-                <img class="hero" src="./img/3.jpg">
+                <img class="hero" src="./img/4.jpg">
 
                 <p>
-                    ម្ចាស់ Page នេះហើយ តែងតែផុសអត្ថបទឡូយៗ ប្លែកៗ និងគួរឲ្យចាប់អារម្មណ៍ រហូតទាក់ទាញអ្នកតាមដានជាច្រើន។ មាតិកានីមួយៗមានភាពច្នៃប្រឌិត បង្កើតការភ្ញាក់ផ្អើល និងធ្វើឲ្យមហាជនចង់តាមដានជាបន្តបន្ទាប់។ មិនថាជារឿងកម្សាន្ត សង្គម ឬ content viral ថ្មីៗ Page នេះតែងមានអ្វីប្លែកមុនគេ។
-                    ដោយសារតែការផុសអត្ថបទមានស្ទីលពិសេស និងចាក់ដោត Page នេះកំពុងទទួលបានការចាប់អារម្មណ៍ខ្លាំងពីអ្នកលេងបណ្ដាញសង្គម និងក្លាយជាទំព័រមួយដែលមនុស្សជាច្រើនរង់ចាំមើលរាល់ post ថ្មីៗ។
+                    Page នេះ តែងតែ Share រឿងអត់ប្រយោជ៍ ​តែប្លែកៗ ឡូយៗ មើលហើយចង់អានបន្ត ចង់ Share តាម។ មាតិកានីមួយៗមានភាពច្នៃប្រឌិត ខ្លះកំប្លែង ខ្លះចាក់ដោត ខ្លះវិញ viral មុនគេ ធ្វើឲ្យអ្នកតាមដានមិនធុញសោះ។ មិនថារឿងកម្សាន្ត សង្គម ឬ content ចម្លែកៗ Page នេះតែង Share អ្វីប្លែកមុនគេ
+                    និងមាន style ខ្លួនឯង។ អត់ប្រយោជ៍តិចមែន… តែអានហើយជាប់ចិត្ត! ដោយសារតែការតែង Share មាតិកាប្លែក ចាក់ដោត និងមាន vibe ឡូយ Page នេះកំពុងទាក់ទាញអ្នកលេងបណ្ដាញសង្គមជាច្រើន ហើយក្លាយជាទំព័រដែលគេចាំមើលរាល់ post ថ្មីៗ។
                 </p>
 
 
                 <div class="share">
                     <button class="like-btn" onclick="likePost()" id="likeBtn">
-    ❤ Like (<span id="likeCount">45</span>)
-  </button>
+        ❤ Like (<span id="likeCount">45</span>)
+    </button>
 
                     <a class="share-btn" href="https://www.facebook.com/share/p/18SKe7SzP3/" target="_blank">
-    Share
-  </a>
+        Share
+    </a>
 
                     <a class="Comment-btn" href="#commentBox">
-    Comment
-  </a>
+        Comment
+    </a>
                 </div>
 
                 <div class="comment-box" id="commentBox">
@@ -68,16 +68,16 @@
                     <textarea id="commentText" placeholder="Write your comment..."></textarea>
 
                     <button class="post-btn" onclick="postComment()">
-    Post Comment
-  </button>
+        Post Comment
+    </button>
 
                     <div id="commentsList"></div>
                 </div>
 
                 <script>
-                    let articleID = "article3";
+                    let articleID = "article4";
 
-                    let likes = Number(localStorage.getItem(articleID + "_likes")) || 95;
+                    let likes = Number(localStorage.getItem(articleID + "_likes")) || 125;
                     let liked = localStorage.getItem(articleID + "_liked");
 
                     document.getElementById("likeCount").innerText = likes;
@@ -105,86 +105,68 @@
                         let input = document.getElementById("commentText");
                         let text = input.value.trim();
 
-                        if (text === "") {
+                        if (text == "") {
                             alert("Write comment first");
                             return;
                         }
 
-                        let comments = JSON.parse(localStorage.getItem(articleID + "_comments")) || [];
+                        let comments = JSON.parse(
+                            localStorage.getItem(articleID + "_comments")
+                        ) || [];
 
                         comments.push({
                             message: text,
                             date: new Date().toLocaleString()
                         });
 
-                        localStorage.setItem(articleID + "_comments", JSON.stringify(comments));
+                        localStorage.setItem(
+                            articleID + "_comments",
+                            JSON.stringify(comments)
+                        );
 
                         input.value = "";
                         loadComments();
                     }
 
                     function loadComments() {
-                        let comments = JSON.parse(localStorage.getItem(articleID + "_comments")) || [];
+                        let comments = JSON.parse(
+                            localStorage.getItem(articleID + "_comments")
+                        ) || [];
+
                         let box = document.getElementById("commentsList");
 
                         box.innerHTML = "";
 
                         comments.slice().reverse().forEach(c => {
                             box.innerHTML += `
-      <div class="comment-item">
-        <p>${c.message}</p>
-        <small>${c.date}</small>
-      </div>
-    `;
+        <div class="comment-item">
+            <p>${c.message}</p>
+            <small>${c.date}</small>
+        </div>
+        `;
                         });
                     }
 
                     window.onload = loadComments;
                 </script>
-                <div class="comment-item">
-                    <p>
-                        page​គាត់ផុសតែអត្ងបទគ្មានប្រយោជន័៍
-                        <span onclick="this.parentElement.parentElement.remove()" style="float:right;cursor:pointer;color:red;">
+            </div>
+            <div class="comment-item">
+                <p>
+                    page​គាត់ផុសតែអត្ងបទគ្មានប្រយោជន័៍
+                    <span onclick="this.parentElement.parentElement.remove()" style="float:right;cursor:pointer;color:red;">
                     </span>
-                    </p>
+                </p>
 
-                    <small>4/23/2026, 15:34:45 PM</small>
-                </div>
-
-
-
+                <small>4/23/2026, 15:34:45 PM</small>
             </div>
 
-            <div class="related">
-                <h2>Related Articles</h2>
 
-                <div class="grid">
-
-                    <a href="article1.html" class="card">
-                        <img src="./img/1.jpg" alt="">
-                        <h4>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត</h4>
-                    </a>
-                    <a href="article2.html" class="card">
-                        <img src="./img/2.jpg" alt="">
-                        <h4> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page</h4>
-                    </a>
-                    <a href="article.html" class="card">
-                        <img src="./img/4.jpg" alt="">
-                        <h4>ម្ចាស់ Page​​ នេះហើយដែលតែងតែ Sh រឿងអត់ប្រយោជ៍...</h4>
-                    </a>
-
-
-                </div>
-            </div>
 
         </div>
 
+        <div class="related">
 
-        <!-- right -->
-        <div class="sidebar">
-
-            <h3>Trending Now</h3>
-
+            <h2>Trending Now</h2>
 
             <a href="article1.html" class="Trending">
                 <span class="num">1</span>
@@ -207,7 +189,37 @@
                 <img src="./img/4.jpg">
                 <h5> ម្ចាស់ Page​​ នេះហើយដែលតែងតែ Sh រឿងអត់ប្រយោជ៍...</h5>
             </a>
+
+
         </div>
+
+    </div>
+
+
+    <!-- right -->
+    <div class="sidebar">
+
+        <h2>Related Articles</h2>
+        <div class="grid">
+
+            <a href="article1.html" class="card">
+                <img src="./img/1.jpg" alt="">
+                <h4>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត</h4>
+            </a>
+            <a href="article2.html" class="card">
+                <img src="./img/2.jpg" alt="">
+                <h4> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page</h4>
+            </a>
+            <a href="article3.html" class="card">
+                <img src="./img/3.jpg" alt="">
+                <h4> ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ...</h4>
+            </a>
+
+
+        </div>
+
+
+    </div>
 
     </div>
     <script>

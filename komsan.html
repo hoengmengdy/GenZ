@@ -48,44 +48,37 @@
 
     <div class="container">
         <main>
-            <h2>Highlights</h2>
+            <h2>
+                កម្សាន្ត
+            </h2>
             <div class="grid" id="highlights"></div>
 
             <br>
-            <h2>Latest Articles</h2>
-            <div class="grid" id="latest"></div>
-
             <div class="pagination">
-                <span>1</span>
-            </div>
+                <span>1</span> <span>2</span>
         </main>
+        </div>
 
-        <aside>
-            <h2>Trending Now</h2>
-            <div class="trending" id="trending"></div>
-        </aside>
-    </div>
+        <script>
+            const articles = [{
+                title: "Page​ នេះហើយដែលផុសរឿង AI​មិនដែលមានភាគ ត",
+                img: "./img/1.jpg",
+                date: "April 23, 2026",
+                link: "article1.html"
+            }, {
+                title: "ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍ ",
+                img: "./img/3.jpg",
+                date: "April 23, 2026",
+                link: "article3.html"
+            }, {
+                title: " ម្ចាស់ Page​​ នេះហើយដែលតែងតែ Share រឿងអត់ប្រយោជ៍... ",
+                img: "./img/4.jpg",
+                date: "April 27, 2026",
+                link: "article4.html"
+            }];
 
-    <script>
-        const articles = [{
-            title: "Page​ នេះហើយដែលផុសរឿង AI​មិនដែលមានភាគ ត",
-            img: "./img/1.jpg",
-            date: "April 23, 2026",
-            link: "article1.html"
-        }, {
-            title: "ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ​ នាក់កាន់ Page",
-            img: "./img/2.jpg",
-            date: "April 23, 2026",
-            link: "article2.html"
-        }, {
-            title: "ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍ ",
-            img: "./img/3.jpg",
-            date: "April 23, 2026",
-            link: "article3.html"
-        }];
-
-        function card(a) {
-            return `
+            function card(a) {
+                return `
     <a href="${a.link}" class="card">
       <img src="${a.img}">
       <div class="content">
@@ -94,24 +87,24 @@
       </div>
     </a>
   `;
-        }
+            }
 
-        document.getElementById("highlights").innerHTML =
-            articles.slice(0, 4).map(card).join("");
+            document.getElementById("highlights").innerHTML =
+                articles.slice(0, 4).map(card).join("");
 
-        document.getElementById("latest").innerHTML =
-            articles.map(card).join("");
+            document.getElementById("latest").innerHTML =
+                articles.map(card).join("");
 
-        document.getElementById("trending").innerHTML =
-            articles.slice(0, 5).map((a, i) => `
+            document.getElementById("trending").innerHTML =
+                articles.slice(0, 5).map((a, i) => `
     <a href="${a.link}" class="trend">
       <div class="num">${i+1}</div>
       <img src="${a.img}">
       <p>${a.title}</p>
     </a>
   `).join("");
-    </script>
-    <script src="script.js" defer></script>
+        </script>
+        <script src="script.js" defer></script>
 </body>
 
 </html>

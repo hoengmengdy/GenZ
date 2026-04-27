@@ -354,3 +354,26 @@ textarea {
     font-size: 32px;
     line-height: 1.7;
 }
+
+.logopiler {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: #021f45;
+    /* dark blue like pic */
+}
+
+.logopiler div {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.logopiler img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 4px;
+}

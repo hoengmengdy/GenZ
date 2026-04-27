@@ -30,15 +30,9 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="logopiler">
         <div>
-            <div class="brand">
-                <h1>GenZ<br>NEWS</h1>
-                <div class="line"></div>
-                <h1>BREAKING<br>NEWS</h1>
-            </div>
-
-            <p class="khmer-title">កុំ​ស្រឡាញ់គេម្នាក់ឯង</p>
+            <img src="./img/logo1.jpg" alt="">
         </div>
     </section>
 
@@ -57,36 +51,40 @@
             <div class="grid" id="latest"></div>
 
             <div class="pagination">
-                <span>1</span>
-            </div>
+                <span>1</span> <span>2</span>...<span>99</span>
         </main>
 
         <aside>
             <h2>Trending Now</h2>
             <div class="trending" id="trending"></div>
         </aside>
-    </div>
+        </div>
 
-    <script>
-        const articles = [{
-            title: "Page​ នេះហើយដែលផុសរឿង AI​មិនដែលមានភាគ ត",
-            img: "./img/1.jpg",
-            date: "April 23, 2026",
-            link: "article1.html"
-        }, {
-            title: "ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ​ នាក់កាន់ Page",
-            img: "./img/2.jpg",
-            date: "April 23, 2026",
-            link: "article2.html"
-        }, {
-            title: "ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍ ",
-            img: "./img/3.jpg",
-            date: "April 23, 2026",
-            link: "article3.html"
-        }];
+        <script>
+            const articles = [{
+                title: "Page​ នេះហើយដែលផុសរឿង AI​មិនដែលមានភាគ ត",
+                img: "./img/1.jpg",
+                date: "April 23, 2026",
+                link: "article1.html"
+            }, {
+                title: "ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ​ នាក់កាន់ Page",
+                img: "./img/2.jpg",
+                date: "April 23, 2026",
+                link: "article2.html"
+            }, {
+                title: "ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍ ",
+                img: "./img/3.jpg",
+                date: "April 23, 2026",
+                link: "article3.html"
+            }, {
+                title: " ម្ចាស់ Page​​ នេះហើយដែលតែងតែ Share រឿងអត់ប្រយោជ៍... ",
+                img: "./img/4.jpg",
+                date: "April 27, 2026",
+                link: "article4.html"
+            }];
 
-        function card(a) {
-            return `
+            function card(a) {
+                return `
     <a href="${a.link}" class="card">
       <img src="${a.img}">
       <div class="content">
@@ -95,24 +93,24 @@
       </div>
     </a>
   `;
-        }
+            }
 
-        document.getElementById("highlights").innerHTML =
-            articles.slice(0, 4).map(card).join("");
+            document.getElementById("highlights").innerHTML =
+                articles.slice(0, 4).map(card).join("");
 
-        document.getElementById("latest").innerHTML =
-            articles.map(card).join("");
+            document.getElementById("latest").innerHTML =
+                articles.map(card).join("");
 
-        document.getElementById("trending").innerHTML =
-            articles.slice(0, 5).map((a, i) => `
+            document.getElementById("trending").innerHTML =
+                articles.slice(0, 5).map((a, i) => `
     <a href="${a.link}" class="trend">
       <div class="num">${i+1}</div>
       <img src="${a.img}">
       <p>${a.title}</p>
     </a>
   `).join("");
-    </script>
-    <script src="script.js" defer></script>
+        </script>
+        <script src="script.js" defer></script>
 </body>
 
 </html>
