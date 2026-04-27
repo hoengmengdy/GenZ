@@ -38,7 +38,7 @@
                 </h1>
 
                 <div class="meta">
-                    April 23, 2026 · 1.5k Views · 5 mins read
+                    April 23, 2026 · 1.5k Views
                 </div>
 
                 <img class="hero" src="./img/2.jpg">
@@ -51,79 +51,184 @@
 
 
                 <div class="share">
-                    <button class="like-btn">
-❤ Like (34)
+
+                    <button class="like-btn" onclick="likePost()" id="likeBtn">
+❤ Like (<span id="likeCount">23</span>)
 </button>
+
                     <a class="share-btn" href="https://www.facebook.com/share/p/1CamaTL1qk/" target="_blank">
-                         Share
-                        </a>
-                    <a class="Comment-btn" href="https://www.facebook.com/share/p/1CamaTL1qk/" target="_blank">
-                         Comment
-                        </a>
+Share
+</a>
+
+                    <a class="Comment-btn" href="#commentBox">
+Comment
+</a>
 
                 </div>
 
 
-                <div class="comment-box">
+                <div class="comment-box" id="commentBox">
                     <h2>Leave a Comment</h2>
 
+                    <textarea id="commentText" placeholder="Write your comment..."></textarea>
 
-
-                    <textarea placeholder="Write your comment..."></textarea>
-
-                    <button class="post-btn">
+                    <button class="post-btn" onclick="postComment()">
 Post Comment
 </button>
 
+                    <div id="commentsList"></div>
+
+                </div>
+
+
+                <script>
+                    // unique save for article2
+                    let articleID = "article2";
+
+                    let likes =
+                        localStorage.getItem(articleID + "_likes") || 103;
+
+                    let liked =
+                        localStorage.getItem(articleID + "_liked");
+
+                    document.getElementById("likeCount").innerText = likes;
+
+                    if (liked) {
+                        document.getElementById("likeBtn").disabled = true;
+                        document.getElementById("likeBtn").innerHTML =
+                            '❤️ Liked (<span id="likeCount">' + likes + '</span>)';
+                    }
+
+                    function likePost() {
+
+                        if (localStorage.getItem(articleID + "_liked")) return;
+
+                        likes++;
+
+                        localStorage.setItem(
+                            articleID + "_likes",
+                            likes
+                        );
+
+                        localStorage.setItem(
+                            articleID + "_liked",
+                            "true"
+                        );
+
+                        document.getElementById("likeBtn").innerHTML =
+                            '❤️ Liked (<span id="likeCount">' + likes + '</span>)';
+
+                        document.getElementById("likeBtn").disabled = true;
+
+                    }
+
+
+                    // comments save
+                    function postComment() {
+
+                        let input =
+                            document.getElementById("commentText");
+
+                        let text = input.value.trim();
+
+                        if (text == "") {
+                            alert("Write comment first");
+                            return;
+                        }
+
+                        let comments =
+                            JSON.parse(
+                                localStorage.getItem(articleID + "_comments")
+                            ) || [];
+
+                        comments.push({
+                            message: text,
+                            date: new Date().toLocaleString()
+                        });
+
+                        localStorage.setItem(
+                            articleID + "_comments",
+                            JSON.stringify(comments)
+                        );
+
+                        input.value = "";
+
+                        loadComments();
+
+                    }
+
+                    function loadComments() {
+
+                        let comments =
+                            JSON.parse(
+                                localStorage.getItem(articleID + "_comments")
+                            ) || [];
+
+                        let box =
+                            document.getElementById("commentsList");
+
+                        box.innerHTML = "";
+
+                        comments.slice().reverse().forEach(c => {
+
+                            box.innerHTML += `
+<div class="comment-item">
+<p>${c.message}</p>
+<small>${c.date}</small>
+</div>
+`;
+
+                        });
+
+                    }
+
+                    window.onload = loadComments;
+                </script>
+
+                <div class="related">
+                    <h2>Related Articles</h2>
+
+                    <div class="grid">
+
+                        <a href="article1.html" class="card">
+                            <img src="./img/1.jpg" alt="">
+                            <h4>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត</h4>
+                        </a>
+                        <a href="article3.html" class="card">
+                            <img src="./img/3.jpg" alt="">
+                            <h4>ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍</h4>
+                        </a>
+
+                    </div>
                 </div>
 
             </div>
 
 
-            <div class="related">
-                <h2>Related Articles</h2>
+            <!-- right -->
+            <div class="sidebar">
 
-                <div class="grid">
+                <h3>Trending Now</h3>
 
-                    <a href="article1.html" class="card">
-                        <img src="./img/1.jpg" alt="">
-                        <h4>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត</h4>
-                    </a>
-                    <a href="article3.html" class="card">
-                        <img src="./img/3.jpg" alt="">
-                        <h4>ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ឡូយ​ ឡូយ​​ ដែលគួរអោយចាប់អារម្មណ៍</h4>
-                    </a>
+                <a href="article1.html" class="Trending">
+                    <span class="num">1</span>
+                    <img src="./img/1.jpg">
+                    <h5>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត...</h5>
+                </a>
 
-                </div>
+                <a href="article2.html" class="Trending">
+                    <span class="num">2</span>
+                    <img src="./img/2.jpg">
+                    <h5> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page...</h5>
+                </a>
+                <a href="article3.html" class="Trending">
+                    <span class="num">3</span>
+                    <img src="./img/3.jpg">
+                    <h5> ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ...</h5>
+                </a>
             </div>
 
         </div>
-
-
-        <!-- right -->
-        <div class="sidebar">
-
-            <h3>Trending Now</h3>
-
-            <a href="article1.html" class="Trending">
-                <span class="num">1</span>
-                <img src="./img/1.jpg">
-                <h5>Page នេះហើយដែលផុសរឿង AI មិនដែលមានភាគត...</h5>
-            </a>
-
-            <a href="article2.html" class="Trending">
-                <span class="num">2</span>
-                <img src="./img/2.jpg">
-                <h5> ZANDO ​​លេងហើយអោយ​​ បុគ្គលិក GenZ នាក់កាន់ Page...</h5>
-            </a>
-            <a href="article3.html" class="Trending">
-                <span class="num">3</span>
-                <img src="./img/3.jpg">
-                <h5> ម្ចាស់ Page​​ នេះហើយដែលតែងតែផុស អត្ថបទ ...</h5>
-            </a>
-        </div>
-
-    </div>
 
 </body>
 

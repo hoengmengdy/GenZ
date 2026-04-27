@@ -39,7 +39,7 @@
                 </h1>
 
                 <div class="meta">
-                    April 23, 2026 · 1.5k Views · 5 mins read
+                    April 23, 2026 · 1.5k Views
                 </div>
 
                 <img class="hero" src="./img/1.jpg">
@@ -50,11 +50,37 @@
                     បច្ចុប្បន្ន page នេះកំពុងទទួលបានការចាប់អារម្មណ៍ខ្លាំង ហើយមានអ្នករង់ចាំតាមដានភាគបន្តយ៉ាងច្រើន។
                 </p>
 
+                <button class="like-btn" onclick="likePost()" id="likeBtn">
+❤ Like (<span id="likeCount">0</span>)
+</button>
 
+                <script>
+                    let likes = localStorage.getItem("likes") || 23;
+                    let liked = localStorage.getItem("liked");
+
+                    document.getElementById("likeCount").innerText = likes;
+
+                    if (liked) {
+                        document.getElementById("likeBtn").disabled = true;
+                        document.getElementById("likeBtn").innerHTML =
+                            '❤️ Liked (<span id="likeCount">' + likes + '</span>)';
+                    }
+
+                    function likePost() {
+                        if (localStorage.getItem("liked")) return;
+
+                        likes++;
+                        localStorage.setItem("likes", likes);
+                        localStorage.setItem("liked", "true");
+
+                        document.getElementById("likeCount").innerText = likes;
+
+                        document.getElementById("likeBtn").disabled = true;
+                    }
+                </script>
                 <div class="share">
-                    <button class="like-btn">
-                        ❤ Like (23)
-                        </button>
+
+
                     <a class="share-btn" href="https://www.facebook.com/share/p/1JPgJ2mor9/" target="_blank">
                          Share
                         </a>
@@ -64,18 +90,67 @@
                 </div>
 
 
-                <div class="comment-box">
+                <div class="comment-box" id="commentBox">
                     <h2>Leave a Comment</h2>
 
-                    <textarea placeholder="Write your comment..."></textarea>
+                    <textarea id="commentText" placeholder="Write your comment..."></textarea>
 
-                    <button class="post-btn">
-Post Comment
-</button>
+                    <button class="post-btn" onclick="postComment()">
+        Post Comment
+    </button>
 
+                    <div id="commentsList"></div>
                 </div>
 
+                <script>
+                    function postComment() {
+                        let commentInput = document.getElementById("commentText");
+                        let text = commentInput.value.trim();
+
+                        if (text == "") {
+                            alert("Write comment first");
+                            return;
+                        }
+
+                        // get old comments
+                        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+                        // add new comment
+                        comments.push({
+                            message: text,
+                            date: new Date().toLocaleString()
+                        });
+
+                        // save
+                        localStorage.setItem("comments", JSON.stringify(comments));
+
+                        commentInput.value = "";
+
+                        loadComments();
+                    }
+
+                    function loadComments() {
+                        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+                        let box = document.getElementById("commentsList");
+                        box.innerHTML = "";
+
+                        comments.slice().reverse().forEach(c => {
+                            box.innerHTML += `
+        <div class="comment-item">
+            <p>${c.message}</p>
+            <small>${c.date}</small>
+        </div>
+        `;
+                        });
+                    }
+
+                    // load saved comments when page opens
+                    window.onload = loadComments;
+                </script>
+
             </div>
+
 
 
             <div class="related">
